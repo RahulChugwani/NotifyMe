@@ -66,15 +66,15 @@ async function getSlotsForDate(user, today, after7days, flag) {
             'accept': 'application/json',
             'Accept-Language': 'hi_IN',
             'X-Requested-With': 'XMLHttpRequest',
-            'crossorigin' : true,
-            
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Methods' : '*'
         }
     };
 
     axios.all(
         [
-            axios.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=440001&date=05-05-2021', {'withCredentials': true}),
-            axios.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=440001&date=12-05-2021', {'withCredentials': true})
+            axios.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=440001&date=05-05-2021', config, {'withCredentials': true}),
+            axios.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=440001&date=12-05-2021',config, {'withCredentials': true})
         ]
     )
     .then( axios.spread( (res1, res2) => {
