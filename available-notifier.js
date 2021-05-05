@@ -71,6 +71,26 @@ async function getSlotsForDate(user, today, after7days, flag) {
         }
     };
 
+    console.log("in getslots");
+
+    var headers1 = {
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods' : '*'
+    }
+
+    axios({
+        method: 'get',
+        url: "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=110001&date=05-05-2021",
+        headers: headers1,
+        withCredentials: true
+    })
+    .then( (res) => {
+        console.log("got check");
+        console.log(res);
+    })
+
+    
     axios.all(
         [
             axios.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=440001&date=05-05-2021', config, {'withCredentials': true}),
