@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
   res.send('Hello World this is Vaccine Notifier!');
 });
 
-app.listen(4000, function () {
+app.listen(port, function () {
   console.log('Example app listening on port 4000!');
 });
 
