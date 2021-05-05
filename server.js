@@ -9,10 +9,11 @@ require('dotenv').config();
 const availableNotifier = require('./available-notifier');
 
 const app = express();
-const port = process.env.PORT || 4000 ;
-
 app.use(cors());
 app.use(express.json());
+
+const port = process.env.PORT || 4000 ;
+
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });

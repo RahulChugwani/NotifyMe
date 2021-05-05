@@ -65,7 +65,8 @@ async function getSlotsForDate(user, today, after7days, flag) {
         headers: {
             'accept': 'application/json',
             'Accept-Language': 'hi_IN',
-            'X-Requested-With': 'XMLHttpRequest'
+            'X-Requested-With': 'XMLHttpRequest',
+            'crossorigin' : true
         }
     };
 
