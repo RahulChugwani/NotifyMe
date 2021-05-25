@@ -81,6 +81,8 @@ async function getSlotsForDate(user, today, after7days, flag) {
         'Access-Control-Allow-Methods' : '*'
     }
     
+
+    /*
     var trialurl = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=' +user.pincode+ '&date='+today;
 
     axios.get(trialurl)
@@ -93,7 +95,7 @@ async function getSlotsForDate(user, today, after7days, flag) {
             console.log("in errr trialget ****************");
             console.log(err);
         })
-
+    */
     /*
     axios({
         method: 'get',
@@ -112,11 +114,12 @@ async function getSlotsForDate(user, today, after7days, flag) {
 
     */
     
-    /*
+    var url1 = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode='+user.pincode+'&date='+today;
+    var url2 = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode='+user.pincode+'&date='+after7days;
     axios.all(
         [
-            axios.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=440001&date=05-05-2021', config, {'withCredentials': true}),
-            axios.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=440001&date=12-05-2021',config, {'withCredentials': true})
+            axios.get(url1, config, {'withCredentials': true}),
+            axios.get(url2 ,config, {'withCredentials': true})
         ]
     )
     .then( axios.spread( (res1, res2) => {
@@ -189,7 +192,6 @@ async function getSlotsForDate(user, today, after7days, flag) {
         notifyMeforError(err, user);
     })
 
-    */
 
 }
 
