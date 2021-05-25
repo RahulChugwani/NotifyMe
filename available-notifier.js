@@ -40,6 +40,7 @@ const getUserDetails = async function() {
 exports.getVaccineAvailablityForUser = async function(user, flag) {
 
     try{
+        console.log("after adding user in db now in getvaccinecheck for new user ***************");
         getVaccineSlotDetails(user, flag);
     }
     catch(e){
@@ -71,7 +72,7 @@ async function getSlotsForDate(user, today, after7days, flag) {
         }
     };
 
-    console.log("in getslots");
+    console.log("in getslots for date, where we will call cowin api");
 
     var headers1 = {
         'accept': 'application/json',
@@ -79,6 +80,7 @@ async function getSlotsForDate(user, today, after7days, flag) {
         'Access-Control-Allow-Methods' : '*'
     }
 
+    /*
     axios({
         method: 'get',
         url: "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=110001&date=05-05-2021",
@@ -89,7 +91,13 @@ async function getSlotsForDate(user, today, after7days, flag) {
         console.log("got check");
         console.log(res);
     })
+    .catch( (err)=>{
+        console.log("erro got here in dummy api");
+        console.log(err);
+    })
 
+    */
+    
     
     axios.all(
         [

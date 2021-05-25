@@ -21,7 +21,7 @@ router.route('/add').post((req, res) =>{
     }
 
     newUser.save()
-    .then(()=> res.json('User added'))
+    .then(()=> res.json('User added successfully'))
     .then( () => {
         console.log("new user: ");
         console.log(extranewUser)
