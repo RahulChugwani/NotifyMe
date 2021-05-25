@@ -39,6 +39,7 @@ const getUserDetails = async function() {
 
 exports.getVaccineAvailablityForUser = async function(user, flag) {
 
+    
     try{
         console.log("after adding user in db now in getvaccinecheck for new user ***************");
         getVaccineSlotDetails(user, flag);
@@ -79,6 +80,19 @@ async function getSlotsForDate(user, today, after7days, flag) {
         'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Methods' : '*'
     }
+    
+    var trialurl = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=' +user.pincode+ '&date='+today;
+
+    axios.get(trialurl)
+        .then( res => res.json())
+        .then( (data) => {
+            console.log("in trial get req *******************");
+            console.log(data);
+        })
+        .catch( err => {
+            console.log("in errr trialget ****************");
+            console.log(err);
+        })
 
     /*
     axios({
@@ -98,7 +112,7 @@ async function getSlotsForDate(user, today, after7days, flag) {
 
     */
     
-    
+    /*
     axios.all(
         [
             axios.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=440001&date=05-05-2021', config, {'withCredentials': true}),
@@ -134,7 +148,8 @@ async function getSlotsForDate(user, today, after7days, flag) {
                 }
             }
         }
-
+        
+        
         for(x in centers_data2){
             var eachCenter = centers_data2[x];
             var resEachCenter = {
@@ -174,6 +189,8 @@ async function getSlotsForDate(user, today, after7days, flag) {
         notifyMeforError(err, user);
     })
 
+    */
+
 }
 
 async function notifyMeforError(err, user){
@@ -206,7 +223,4 @@ async function notifyMe(validCenters, date, user, flag){
             }
         })
 
-    
-    
-    
 };
