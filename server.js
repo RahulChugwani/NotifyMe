@@ -20,7 +20,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedT
 
 const connection = mongoose.connection;
 connection.once( 'open', ()=>{
-    console.log("Mongodb connection successful");
+    console.log("Mongodb connection successful ofcourse");
 });
 
 const usersRouter = require('./routes/user');
